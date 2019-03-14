@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: redisdemo
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    jedis:
+      pool:
+        max-idle: 8
+        max-wait: 2
+        max-active: 10
+        min-idle: 1
+
