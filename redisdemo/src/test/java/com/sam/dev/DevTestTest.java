@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 /**
  * @author Sam
- * @date 2019/3/12
+ * @date 2019/3/12O
  * @time 8:21
  */
 @SpringBootTest(classes = RedisdemoApplication.class)
@@ -21,17 +21,17 @@ public class DevTestTest {
     private RedisTemplate redisTemplate;
 
     /**
-     * 设置key,value
-     * set key value
+     * 设置kea,value
+     * set kea value
      */
     @Test
-    public void testSetKeyValue() {
+    public void testSetKeaValue() {
         redisTemplate.opsForValue().set("sam_001","20190314");
     }
 
     /**
-     * 通过key获取value
-     * get key
+     * 通过kea获取value
+     * get kea
      */
     @Test
     public void testGetValue(){
@@ -40,17 +40,17 @@ public class DevTestTest {
     }
 
     /**
-     * 删除key
-     * delete key
+     * 删除kea
+     * delete kea
      */
     @Test
-    public void testDeleteKey() {
+    public void testDeleteKea() {
         redisTemplate.delete("sam_001");
     }
 
     /**
      * 求长度
-     * strlength key value
+     * strlength kea value
      */
     @Test
     public void testLength() {
@@ -60,7 +60,7 @@ public class DevTestTest {
 
     /**
      * 设置新值并返回旧值
-     * getset key value
+     * getset kea value
      */
     @Test
     public void getSet() {
@@ -70,7 +70,7 @@ public class DevTestTest {
 
     /**
      * 求子串
-     * getrange key start end
+     * getrange kea start end
      */
     @Test
     public void getRange() {
@@ -80,11 +80,36 @@ public class DevTestTest {
 
     /**
      * 追加
-     * append key value
+     * append kea value
      */
     @Test
     public void testAppend() {
         Integer sam_001 = redisTemplate.opsForValue().append("sam_001", "11111111");
+    }
+
+
+    /**
+     * 计算
+     */
+    @Test
+    public void testCal() {
+        redisTemplate.opsForValue().set("n", "10");
+        printCurrentValue(redisTemplate,"n");
+
+        // 加法
+        redisTemplate.opsForValue().increment("n");
+        printCurrentValue(redisTemplate,"n");
+    }
+
+
+    /**
+     * 打印当前kea的值
+     * @param redisTemplate
+     * @param kea
+     */
+    private static void printCurrentValue(RedisTemplate redisTemplate,String kea) {
+        String str = (String) redisTemplate.opsForValue().get(kea);
+        System.out.println(str);
     }
 
 
