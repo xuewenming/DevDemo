@@ -93,8 +93,8 @@ public class TestSet {
          *srandmember key1,key2
          */
         List<String> strings = redisTemplate.opsForSet().randomMembers(name1, 2L);
-        strings.forEach(s->{
-            System.out.println(s);
+        strings.forEach(s1->{
+            System.out.println(s1);
         });
 
         /**
